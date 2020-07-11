@@ -8,7 +8,7 @@ class ParaPortElement {
 
     }
     getSpeed(){
-        return this.element.getAttribute('data-para-speed');
+        return parseFloat( this.element.getAttribute('data-para-speed') );
     }
     isVisible( position ){
 
