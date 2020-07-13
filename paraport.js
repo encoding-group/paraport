@@ -1,4 +1,4 @@
-class ParaPortElement {
+class ParaportElement {
   constructor(element, defaultSpeed = 2) {
     this._element = element;
 
@@ -51,7 +51,7 @@ class Paraport {
 
     this.elements = [];
     for (const element of elements) {
-      this.elements.push(new ParaPortElement(element, defaultSpeed));
+      this.elements.push(new ParaportElement(element, defaultSpeed));
     }
 
     document.body.classList.add("para-initalized");
