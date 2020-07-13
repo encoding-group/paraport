@@ -19,7 +19,7 @@ At the bottom of your file
 
 ## Custom usage
 
-Custom selector
+Custom selector (default is `.para`)
 ```html
 <div class="lala"></div>
 <script>
@@ -27,7 +27,7 @@ Custom selector
 </script>
 ```
 
-Custom default speed
+Custom base speed (default is `2`)
 ```html
 <script>
   const paraport = new Paraport('.para',4);
