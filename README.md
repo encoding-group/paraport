@@ -45,7 +45,7 @@ Custom speed for single elements (float)
 All `.para` elements visible within the viewport will be added the class `.para-visible`.
 
 ## Development
-Compile SCSS
+Compile SCSS for demo page
 ```
 sass --watch styles.scss:styles.css
 ```
