@@ -22,7 +22,7 @@ At the bottom of your file
 ## Custom usage
 
 Arguments
-```
+```js
 Paraport( string selector = '.para', float defaultSpeed = 2);
 ```
 
