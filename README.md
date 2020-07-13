@@ -4,26 +4,19 @@ Minimalist and butter smooth parallax scrolling effect relative to the browsers 
 
 [Live Demo](https://encoding-group.github.io/paraport/)
 
-## Basic usage
+## Usage
 
-For the single elements
-``` html
-<div class="para"></div>
+```js
+Paraport( /* string */ selector = '.para', /* float */ defaultSpeed = 2);
 ```
 
-At the bottom of your file
+Basic usage
 ```html
+<div class="para"></div>
 <script src="paraport.js"></script>
 <script>
   const paraport = new Paraport();
 </script>
-```
-
-## Custom usage
-
-Arguments
-```js
-Paraport( string selector = '.para', float defaultSpeed = 2);
 ```
 
 Custom selector
@@ -56,7 +49,7 @@ sass --watch styles.scss:styles.css
 ```
 
 ## Contributing
-We are happy for all issues opend, pull requests sent, ideas shared.
+We are happy for all issues opened, pull requests sent, ideas shared.
 
 ## Licence
-This software is free and open source. Use it. We appreciate if you give credit or show us your results.
+This software is open source, use it for free. We appreciate if you give credit or share your results.
