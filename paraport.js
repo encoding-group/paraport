@@ -1,9 +1,11 @@
 class ParaPortElement {
   constructor(element, defaultSpeed = 2) {
     this._element = element;
+
     this._speed = parseFloat(
       this._element.getAttribute("data-para-speed") || defaultSpeed
     );
+
     this._visible = undefined;
     this._lastVisible = undefined;
   }
@@ -20,7 +22,7 @@ class ParaPortElement {
     }
 
     if (this._visible === this._lastVisible) return;
-    
+
     if (this._visible === true) {
       this._element.classList.add("para-visible");
     } else {
@@ -40,7 +42,6 @@ class ParaPortElement {
 
 class Paraport {
   constructor(selector = ".para", defaultSpeed = 2) {
-    this.defaultSpeed = defaultSpeed;
     let elements = document.querySelectorAll(selector);
 
     if (elements.length < 1) {
@@ -50,40 +51,25 @@ class Paraport {
 
     this.elements = [];
     for (const element of elements) {
-      this.elements.push(new ParaPortElement(element, this.defaultSpeed));
+      this.elements.push(new ParaPortElement(element, defaultSpeed));
     }
-
-    this.window = this.getWindow();
 
     document.body.classList.add("para-initalized");
 
     this.onScroll();
 
-    let scrollTimeout = false;
-    let lastScrollPosition, scrollPosition;
-    let that = this;
-    window.addEventListener("scroll", (event) => {
-      scrollPosition = Math.floor(scrollPosition);
-      if (scrollTimeout === false && scrollPosition !== lastScrollPosition) {
-        window.requestAnimationFrame(function () {
-          that.onScroll();
+    let context = this;
 
-          lastScrollPosition = scrollPosition;
-          scrollTimeout = false;
-        });
-        scrollTimeout = true;
-      }
+    window.addEventListener("scroll", (event) => {
+      window.requestAnimationFrame(function () {
+        context.onScroll();
+      });
     });
   }
-  getWindow() {
-    return {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-  }
+
   onScroll() {
-    for (const element of this.elements) {
-      element.isVisible(this.window.height);
+    for (let i = 0; i < this.elements.length; i++) {
+      this.elements[i].isVisible(window.scrollY);
     }
   }
 }
