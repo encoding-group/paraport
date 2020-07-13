@@ -21,7 +21,12 @@ At the bottom of your file
 
 ## Custom usage
 
-Custom selector (default is `.para`)
+Arguments
+```
+Paraport( string selector = '.para', float defaultSpeed = 2);
+```
+
+Custom selector
 ```html
 <div class="lala"></div>
 <script>
@@ -29,14 +34,14 @@ Custom selector (default is `.para`)
 </script>
 ```
 
-Custom base speed (float, default is `2`) as second argument
+Custom base speed
 ```html
 <script>
   const paraport = new Paraport('.para',4);
 </script>
 ```
 
-Custom speed for single elements (float)
+Custom speed for single elements (`float`, default is `2`)
 ```html
 <div class="para" data-para-speed="4"></div>
 ```
