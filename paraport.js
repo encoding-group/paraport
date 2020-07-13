@@ -49,9 +49,9 @@ class Paraport {
       return;
     }
 
-    this.elements = [];
+    this._elements = [];
     for (const element of elements) {
-      this.elements.push(new ParaportElement(element, defaultSpeed));
+      this._elements.push(new ParaportElement(element, defaultSpeed));
     }
 
     document.body.classList.add("para-initalized");
@@ -68,8 +68,8 @@ class Paraport {
   }
 
   onScroll() {
-    for (let i = 0; i < this.elements.length; i++) {
-      this.elements[i].isVisible(window.scrollY);
+    for (let i = this._elements.length - 1; i >= 0; i--) {
+      this._elements[i].isVisible(window.scrollY);
     }
   }
 }
