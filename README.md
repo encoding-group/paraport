@@ -19,7 +19,7 @@ At the bottom of your file
 
 ## Custom usage
 
-Custom class
+Custom selector
 ```html
 <div class="lala"></div>
 <script>
