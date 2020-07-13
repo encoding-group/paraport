@@ -1,10 +1,22 @@
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paraport</title>
-    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <meta name="author" content="encoding.group">
+    <meta name="description" content="Minimalist parallax scrolling effect relative to the browsers viewport.">
+    
+    <link rel="stylesheet" href="assets/demo.css" type="text/css">
   </head>
   <body>
-    <div class="wrapper">
+    
+    <header>
+      <h1>Paraport.js</h1>
+      <a href="https://github.com/encoding-group/paraport/">GitHub</a>
+    </header>
+    
+    <div class="grid">
+
       <div class="box">
         <div class="para" data-para-speed="1">Para 1</div>
       </div>
@@ -17,6 +29,7 @@
       <div class="box">
         <div class="para" data-para-speed="4">Para 4</div>
       </div>
+
       <div class="box">
         <div class="para" data-para-speed="1">Para 1</div>
       </div>
@@ -29,6 +42,7 @@
       <div class="box">
         <div class="para" data-para-speed="4">Para 4</div>
       </div>
+
       <div class="box">
         <div class="para" data-para-speed="1">Para 1</div>
       </div>
@@ -41,6 +55,7 @@
       <div class="box">
         <div class="para" data-para-speed="4">Para 4</div>
       </div>
+
       <div class="box">
         <div class="para" data-para-speed="1">Para 1</div>
       </div>
@@ -53,6 +68,7 @@
       <div class="box">
         <div class="para" data-para-speed="4">Para 4</div>
       </div>
+
       <div class="box">
         <div class="para" data-para-speed="1">Para 1</div>
       </div>
@@ -65,6 +81,7 @@
       <div class="box">
         <div class="para" data-para-speed="4">Para 4</div>
       </div>
+
       <div class="box">
         <div class="para" data-para-speed="1">Para 1</div>
       </div>
@@ -77,6 +94,7 @@
       <div class="box">
         <div class="para" data-para-speed="4">Para 4</div>
       </div>
+
       <div class="box">
         <div class="para" data-para-speed="1">Para 1</div>
       </div>
@@ -89,11 +107,16 @@
       <div class="box">
         <div class="para" data-para-speed="4">Para 4</div>
       </div>
+
     </div>
+    
+    <footer>
+      ©2020 <a href="https://encoding.group" target="_blank">encoding.group</a>
+    </footer>
 
     <script src="paraport.js"></script>
     <script>
-      const paraport = new Paraport(".para");
+      const paraport = new Paraport();
     </script>
   </body>
 </html>

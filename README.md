@@ -1,6 +1,6 @@
 # paraport
 
-Parallax scrolling effect relative to the viewport.
+Minimalist and butter smooth parallax scrolling effect relative to the browsers viewport.
 
 [Live Demo](https://encoding-group.github.io/paraport/)
 
@@ -40,6 +40,9 @@ Custom speed for single elements
 ```html
 <div class="para" data-para-speed="4"></div>
 ```
+
+## Events
+All `.para` elements visible within the viewport will be added the class `.para-visible`.
 
 ## Development
 Compile SCSS
