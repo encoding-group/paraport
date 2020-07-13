@@ -1,34 +1,35 @@
 class ParaPortElement {
-  constructor(element, defaultSpeed) {
-    this.element = element;
-    this.speed = parseFloat(
-      this.element.getAttribute("data-para-speed") || defaultSpeed
+  constructor(element, defaultSpeed = 2) {
+    this._element = element;
+    this._speed = parseFloat(
+      this._element.getAttribute("data-para-speed") || defaultSpeed
     );
   }
 
   isVisible(position) {
-    let box = this.element.getBoundingClientRect();
+    let box = this._element.getBoundingClientRect();
 
     if (box.top < position && box.bottom > 0) {
-      this.element.classList.add("para-visible");
+      this._element.classList.add("para-visible");
     } else {
-      this.element.classList.remove("para-visible");
+      this._element.classList.remove("para-visible");
     }
 
-    this.offset = box.top * 0.1 * this.speed;
+    this.offset = box.top * 0.1 * this._speed;
   }
 
-  get Speed() {
-    return this.speed;
+  get speed() {
+    return this._speed;
   }
 
   set offset(offset) {
-    this.element.style.transform = `translateY(${offset}px)`;
+    this._element.style.transform = `translateY(${offset}px)`;
   }
 }
 
 class Paraport {
-  constructor(selector = ".para") {
+  constructor(selector = ".para", defaultSpeed = 2) {
+    this.defaultSpeed = defaultSpeed;
     let elements = document.querySelectorAll(selector);
 
     if (elements.length < 1) {
@@ -38,7 +39,7 @@ class Paraport {
 
     this.elements = [];
     for (const element of elements) {
-      this.elements.push(new ParaPortElement(element));
+      this.elements.push(new ParaPortElement(element, this.defaultSpeed));
     }
 
     this.window = this.getWindow();
