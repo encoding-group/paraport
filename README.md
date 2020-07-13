@@ -34,7 +34,7 @@ Custom default speed
 </script>
 ```
 
-Custom speed fr single elements
+Custom speed for single elements
 ```html
 <div class="para" data-para-speed="4"></div>
 ```
