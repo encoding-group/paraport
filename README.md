@@ -1,4 +1,4 @@
-# paraport
+# Paraport.js
 
 Minimalist and butter smooth parallax scrolling effect relative to the browsers viewport.
 
@@ -52,4 +52,4 @@ sass --watch styles.scss:styles.css
 We are happy for all issues opened, pull requests sent, ideas shared.
 
 ## Licence
-This software is open source, use it for free. We appreciate if you give credit or share your results.
+This software is open source, use and fork it for free. We appreciate if you give credit or share your results.
