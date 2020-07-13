@@ -1,5 +1,7 @@
 # paraport
 
+Parallax scrolling effect relative to the viewport.
+
 [Live Demo](https://encoding-group.github.io/paraport/)
 
 ## Basic usage
