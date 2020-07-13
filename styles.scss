@@ -33,7 +33,7 @@ body {
         padding: 1rem;
 
         > div {
-            height: 70vh;
+            height: 65vh;
             padding: 1rem;
             border-radius: 1rem;
             background-color: #000;
@@ -45,7 +45,8 @@ body {
 }
 
 .para {
+    transition: background-color 300ms ease;
     &.para-visible {
-        background-color: #00f;
+        background-color: #00f !important;
     }
 }

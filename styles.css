@@ -30,15 +30,18 @@ body {
   padding: 1rem;
 }
 .wrapper .box > div {
-  height: 70vh;
+  height: 65vh;
   padding: 1rem;
   border-radius: 1rem;
   background-color: #000;
   color: #fff;
 }
 
+.para {
+  transition: background-color 300ms ease;
+}
 .para.para-visible {
-  background-color: #00f;
+  background-color: #00f !important;
 }
 
 /*# sourceMappingURL=styles.css.map */

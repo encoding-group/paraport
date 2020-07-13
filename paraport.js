@@ -45,7 +45,7 @@ class Paraport {
 
         document.body.classList.add('para-initalized');
 
-        that.onScroll();
+        this.onScroll();
         
         let scrollTimeout = false;
         let lastScrollPosition, scrollPosition;
