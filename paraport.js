@@ -7,7 +7,7 @@ class ParaportElement {
     ) * 0.05;
 
     let box = this._element.getBoundingClientRect();
-    this._checkPoint = (window.innerHeight - box.height) * 0.5;
+    this._centerPoint = (window.innerHeight - box.height) * 0.5;
 
     this._visible = undefined;
     this._lastVisible = undefined;
@@ -16,7 +16,7 @@ class ParaportElement {
   isVisible() {
     let box = this._element.getBoundingClientRect();
 
-    this.offset = - (this._checkPoint - box.top) * this._speed;
+    this.offset = - (this._centerPoint - box.top) * this._speed;
 
     if (box.y < window.innerHeight && box.bottom > 0) {
       this._visible = true;
@@ -36,7 +36,7 @@ class ParaportElement {
 
   onResize(){
     let box = this._element.getBoundingClientRect();
-    this._checkPoint = (window.innerHeight - box.height) * 0.5;
+    this._centerPoint = (window.innerHeight - box.height) * 0.5;
   }
 
   get speed() {
