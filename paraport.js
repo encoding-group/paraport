@@ -2,13 +2,13 @@ class ParaportElement {
   constructor(element, defaultSpeed = 2) {
     this._element = element;
 
-    this._speed = parseFloat(
-      this._element.getAttribute("data-para-speed") || defaultSpeed
-    ) * 0.05;
+    this._speed =
+      parseFloat(
+        this._element.getAttribute("data-para-speed") || defaultSpeed
+      ) * 0.05;
 
-    this._centerPoint = (
-      window.innerHeight - this._element.getBoundingClientRect().height
-    ) * 0.5;
+    this._centerPoint =
+      (window.innerHeight - this._element.getBoundingClientRect().height) * 0.5;
 
     this._visible = undefined;
     this._lastVisible = undefined;
@@ -17,7 +17,7 @@ class ParaportElement {
   isVisible() {
     let box = this._element.getBoundingClientRect();
 
-    this.offset = - (this._centerPoint - box.top) * this._speed;
+    this.offset = -(this._centerPoint - box.top) * this._speed;
 
     this._visible = box.y < window.innerHeight && box.bottom > 0;
 
@@ -32,9 +32,8 @@ class ParaportElement {
   }
 
   onResize() {
-    this._centerPoint = (
-      window.innerHeight - this._element.getBoundingClientRect().height
-    ) * 0.5;
+    this._centerPoint =
+      (window.innerHeight - this._element.getBoundingClientRect().height) * 0.5;
   }
 
   get speed() {
@@ -66,18 +65,25 @@ class Paraport {
 
     let context = this;
 
-    window.addEventListener("scroll", () => {
-      window.requestAnimationFrame( () => {
-        context.onScroll();
-      });
-    }, {passive: true});
+    window.addEventListener(
+      "scroll",
+      () => {
+        window.requestAnimationFrame(() => {
+          context.onScroll();
+        });
+      },
+      { passive: true }
+    );
 
-    window.addEventListener("resize", () => {
-      window.requestAnimationFrame( () => {
-        context.onResize();
-      });
-    }, {passive: true});
-
+    window.addEventListener(
+      "resize",
+      () => {
+        window.requestAnimationFrame(() => {
+          context.onResize();
+        });
+      },
+      { passive: true }
+    );
   }
 
   onScroll() {
