@@ -4,12 +4,10 @@ class ParaportElement {
 
     this._speed = parseFloat(
       this._element.getAttribute("data-para-speed") || defaultSpeed
-    );
+    ) * 0.05;
 
-    let context = this;
-    this._element.addEventListener("click", (event) => {
-      console.log( context._element.getBoundingClientRect() );
-    });
+    let box = this._element.getBoundingClientRect();
+    this._checkPoint = (window.innerHeight - box.height) * 0.5;
 
     this._visible = undefined;
     this._lastVisible = undefined;
@@ -18,7 +16,7 @@ class ParaportElement {
   isVisible() {
     let box = this._element.getBoundingClientRect();
 
-    this.offset = - (window.innerHeight - box.top - box.top - box.height) * 0.05 * this._speed;
+    this.offset = - (this._checkPoint - box.top) * this._speed;
 
     if (box.y < window.innerHeight && box.bottom > 0) {
       this._visible = true;
@@ -34,6 +32,11 @@ class ParaportElement {
       this._element.classList.remove("para-visible");
     }
     this._lastVisible = this._visible;
+  }
+
+  onResize(){
+    let box = this._element.getBoundingClientRect();
+    this._checkPoint = (window.innerHeight - box.height) * 0.5;
   }
 
   get speed() {
@@ -71,11 +74,11 @@ class Paraport {
       });
     });
 
-    /* window.addEventListener("resize", (event) => {
+    window.addEventListener("resize", (event) => {
       window.requestAnimationFrame(function () {
         context.onResize();
       });
-    }); */
+    });
 
   }
 
@@ -85,9 +88,9 @@ class Paraport {
     }
   }
 
-  /*
   onResize() {
-    console.log('resize');
+    for (let i = this._elements.length - 1; i >= 0; i--) {
+      this._elements[i].onResize();
+    }
   }
-  */
 }
