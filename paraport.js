@@ -18,7 +18,6 @@ class ParaportElement {
   isVisible() {
     let box = this._element.getBoundingClientRect();
 
-    // this.offset = box.top * 0.1 * this._speed;
     this.offset = - (window.innerHeight - box.top - box.top - box.height) * 0.05 * this._speed;
 
     if (box.y < window.innerHeight && box.bottom > 0) {
@@ -51,7 +50,7 @@ class Paraport {
     let elements = document.querySelectorAll(selector);
 
     if (elements.length < 1) {
-      console.warning("No elements found");
+      console.warn(`No elements found matching ${selector}`);
       return;
     }
 
@@ -72,6 +71,12 @@ class Paraport {
       });
     });
 
+    /* window.addEventListener("resize", (event) => {
+      window.requestAnimationFrame(function () {
+        context.onResize();
+      });
+    }); */
+
   }
 
   onScroll() {
@@ -79,4 +84,10 @@ class Paraport {
       this._elements[i].isVisible();
     }
   }
+
+  /*
+  onResize() {
+    console.log('resize');
+  }
+  */
 }
