@@ -6,8 +6,9 @@ class ParaportElement {
       this._element.getAttribute("data-para-speed") || defaultSpeed
     ) * 0.05;
 
-    let box = this._element.getBoundingClientRect();
-    this._centerPoint = (window.innerHeight - box.height) * 0.5;
+    this._centerPoint = (
+      window.innerHeight - this._element.getBoundingClientRect().height
+    ) * 0.5;
 
     this._visible = undefined;
     this._lastVisible = undefined;
@@ -18,11 +19,7 @@ class ParaportElement {
 
     this.offset = - (this._centerPoint - box.top) * this._speed;
 
-    if (box.y < window.innerHeight && box.bottom > 0) {
-      this._visible = true;
-    } else {
-      this._visible = false;
-    }
+    this._visible = box.y < window.innerHeight && box.bottom > 0;
 
     if (this._visible === this._lastVisible) return;
 
@@ -34,9 +31,10 @@ class ParaportElement {
     this._lastVisible = this._visible;
   }
 
-  onResize(){
-    let box = this._element.getBoundingClientRect();
-    this._centerPoint = (window.innerHeight - box.height) * 0.5;
+  onResize() {
+    this._centerPoint = (
+      window.innerHeight - this._element.getBoundingClientRect().height
+    ) * 0.5;
   }
 
   get speed() {
@@ -68,14 +66,14 @@ class Paraport {
 
     let context = this;
 
-    window.addEventListener("scroll", (event) => {
-      window.requestAnimationFrame(function () {
+    window.addEventListener("scroll", () => {
+      window.requestAnimationFrame( () => {
         context.onScroll();
       });
     });
 
-    window.addEventListener("resize", (event) => {
-      window.requestAnimationFrame(function () {
+    window.addEventListener("resize", () => {
+      window.requestAnimationFrame( () => {
         context.onResize();
       });
     });
