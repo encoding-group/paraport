@@ -7,17 +7,26 @@ class ParaportElement {
         this._element.getAttribute("data-para-speed") || defaultSpeed
       ) * 0.05;
 
-    this._centerPoint =
-      (window.innerHeight - this._element.getBoundingClientRect().height) * 0.5;
-
     this._visible = undefined;
     this._lastVisible = undefined;
+
+    this.recenter();
   }
 
-  isVisible() {
-    let box = this._element.getBoundingClientRect();
+  update() {
+    this.calculateOffset();
+    this.toggleVisibility();
+  }
 
-    this.offset = -(this._centerPoint - box.top) * this._speed;
+  calculateOffset() {
+    let offset =
+      -(this._centerPoint - this._element.getBoundingClientRect().top) *
+      this._speed;
+    this._element.style.transform = `translateY(${offset}px)`;
+  }
+
+  toggleVisibility() {
+    let box = this._element.getBoundingClientRect();
 
     this._visible = box.y < window.innerHeight && box.bottom > 0;
 
@@ -28,20 +37,17 @@ class ParaportElement {
     } else {
       this._element.classList.remove("para-visible");
     }
+
     this._lastVisible = this._visible;
   }
 
-  onResize() {
+  recenter() {
     this._centerPoint =
       (window.innerHeight - this._element.getBoundingClientRect().height) * 0.5;
   }
 
   get speed() {
     return this._speed;
-  }
-
-  set offset(offset) {
-    this._element.style.transform = `translateY(${offset}px)`;
   }
 }
 
@@ -88,13 +94,13 @@ class Paraport {
 
   onScroll() {
     for (let i = this._elements.length - 1; i >= 0; i--) {
-      this._elements[i].isVisible();
+      this._elements[i].update();
     }
   }
 
   onResize() {
     for (let i = this._elements.length - 1; i >= 0; i--) {
-      this._elements[i].onResize();
+      this._elements[i].recenter();
     }
   }
 }
