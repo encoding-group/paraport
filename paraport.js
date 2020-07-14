@@ -7,10 +7,9 @@ class ParaportElement {
         this._element.getAttribute("data-para-speed") || defaultSpeed
       ) * 0.05;
 
-    this._visible = undefined;
-    this._lastVisible = undefined;
-
     this._centerPoint = this.calculateCenterPoint();
+
+    this._lastVisible = undefined;
   }
 
   update() {
@@ -28,17 +27,17 @@ class ParaportElement {
   updateVisibility() {
     let box = this._element.getBoundingClientRect();
 
-    this._visible = box.y < window.innerHeight && box.bottom > 0;
+    let isVisible = box.y < window.innerHeight && box.bottom > 0;
 
-    if (this._visible === this._lastVisible) return;
+    if (isVisible === this._lastVisible) return;
 
-    if (this._visible) {
+    if (isVisible) {
       this._element.classList.add("para-visible");
     } else {
       this._element.classList.remove("para-visible");
     }
 
-    this._lastVisible = this._visible;
+    this._lastVisible = isVisible;
   }
 
   recenter() {
