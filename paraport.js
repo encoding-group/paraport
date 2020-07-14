@@ -6,16 +6,21 @@ class ParaportElement {
       this._element.getAttribute("data-para-speed") || defaultSpeed
     );
 
+    let context = this;
+    this._element.addEventListener("click", (event) => {
+      console.log( context._element.getBoundingClientRect() );
+    });
+
     this._visible = undefined;
     this._lastVisible = undefined;
   }
 
-  isVisible(scrollPosition) {
+  isVisible() {
     let box = this._element.getBoundingClientRect();
 
     this.offset = box.top * 0.1 * this._speed;
 
-    if (box.top < scrollPosition && box.bottom > 0) {
+    if (box.y < window.innerHeight && box.bottom > 0) {
       this._visible = true;
     } else {
       this._visible = false;
@@ -69,7 +74,7 @@ class Paraport {
 
   onScroll() {
     for (let i = this._elements.length - 1; i >= 0; i--) {
-      this._elements[i].isVisible(window.scrollY);
+      this._elements[i].isVisible();
     }
   }
 }
