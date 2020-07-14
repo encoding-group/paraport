@@ -70,13 +70,13 @@ class Paraport {
       window.requestAnimationFrame( () => {
         context.onScroll();
       });
-    });
+    }, {passive: true});
 
     window.addEventListener("resize", () => {
       window.requestAnimationFrame( () => {
         context.onResize();
       });
-    });
+    }, {passive: true});
 
   }
 
