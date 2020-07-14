@@ -18,7 +18,8 @@ class ParaportElement {
   isVisible() {
     let box = this._element.getBoundingClientRect();
 
-    this.offset = box.top * 0.1 * this._speed;
+    // this.offset = box.top * 0.1 * this._speed;
+    this.offset = - (window.innerHeight - box.top - box.top - box.height) * 0.05 * this._speed;
 
     if (box.y < window.innerHeight && box.bottom > 0) {
       this._visible = true;
@@ -70,6 +71,7 @@ class Paraport {
         context.onScroll();
       });
     });
+
   }
 
   onScroll() {
