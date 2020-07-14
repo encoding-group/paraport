@@ -45,10 +45,6 @@ class ParaportElement {
     this._centerPoint =
       (window.innerHeight - this._element.getBoundingClientRect().height) * 0.5;
   }
-
-  get speed() {
-    return this._speed;
-  }
 }
 
 class Paraport {
