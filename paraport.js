@@ -10,29 +10,29 @@ class ParaportElement {
     this._visible = undefined;
     this._lastVisible = undefined;
 
-    this.recenter();
+    this._centerPoint = this.calculateCenterPoint();
   }
 
   update() {
-    this.calculateOffset();
-    this.toggleVisibility();
+    this.applyOffset();
+    this.updateVisibility();
   }
 
-  calculateOffset() {
+  applyOffset() {
     let offset =
       -(this._centerPoint - this._element.getBoundingClientRect().top) *
       this._speed;
     this._element.style.transform = `translateY(${offset}px)`;
   }
 
-  toggleVisibility() {
+  updateVisibility() {
     let box = this._element.getBoundingClientRect();
 
     this._visible = box.y < window.innerHeight && box.bottom > 0;
 
     if (this._visible === this._lastVisible) return;
 
-    if (this._visible === true) {
+    if (this._visible) {
       this._element.classList.add("para-visible");
     } else {
       this._element.classList.remove("para-visible");
@@ -42,8 +42,13 @@ class ParaportElement {
   }
 
   recenter() {
-    this._centerPoint =
-      (window.innerHeight - this._element.getBoundingClientRect().height) * 0.5;
+    this._centerPoint = this.calculateCenterPoint();
+  }
+
+  calculateCenterPoint() {
+    return (
+      (window.innerHeight - this._element.getBoundingClientRect().height) * 0.5
+    );
   }
 }
 
