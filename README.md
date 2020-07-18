@@ -45,7 +45,7 @@ All `.para` elements visible within the viewport will be added the class `.para-
 ## Development
 Compile SCSS for demo page
 ```
-sass --watch styles.scss:styles.css
+sass --watch assets/demo.scss:assets/demo.css
 ```
 
 ## Contributing
