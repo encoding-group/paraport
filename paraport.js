@@ -10,6 +10,8 @@ class ParaportElement {
     this._centerPoint = this.calculateCenterPoint();
 
     this._lastVisible = undefined;
+
+    this.update();
   }
 
   update() {
@@ -46,7 +48,7 @@ class ParaportElement {
 
   calculateCenterPoint() {
     return (
-      (window.innerHeight - this._element.getBoundingClientRect().height) * 0.5
+      (window.innerHeight - this._element.offsetHeight) * 0.5
     );
   }
 }
@@ -67,7 +69,7 @@ class Paraport {
 
     document.body.classList.add("para-initalized");
 
-    this.onScroll();
+    // this.onScroll();
 
     let context = this;
 
