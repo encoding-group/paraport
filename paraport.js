@@ -1,3 +1,12 @@
+/*
+* paraport.js
+* 
+* ©2020 encoding.group 
+* https://github.com/encoding-group/paraport
+* 
+* v0.1 last modified 2020-07-18
+*/
+
 class ParaportElement {
   constructor(element, defaultSpeed = 2) {
     this._element = element;
