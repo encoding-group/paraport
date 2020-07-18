@@ -69,8 +69,6 @@ class Paraport {
 
     document.body.classList.add("para-initalized");
 
-    // this.onScroll();
-
     let context = this;
 
     window.addEventListener(
