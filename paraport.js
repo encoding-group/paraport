@@ -1,9 +1,9 @@
 /*
 * paraport.js
-* 
-* ©2020 encoding.group 
+*
+* ©2020 encoding.group
 * https://github.com/encoding-group/paraport
-* 
+*
 * v0.1 last modified 2020-07-18
 */
 
@@ -79,6 +79,10 @@ class Paraport {
     document.body.classList.add("para-initalized");
 
     let context = this;
+
+    setTimeout(() => {
+      context.onScroll();
+    }, 1);
 
     window.addEventListener(
       "scroll",
