@@ -81,14 +81,14 @@ class Paraport {
     let context = this;
 
     setTimeout(() => {
-      context.onScroll();
+      context.updateElements();
     }, 1);
 
     window.addEventListener(
       "scroll",
       () => {
         window.requestAnimationFrame(() => {
-          context.onScroll();
+          context.updateElements();
         });
       },
       { passive: true }
@@ -98,20 +98,20 @@ class Paraport {
       "resize",
       () => {
         window.requestAnimationFrame(() => {
-          context.onResize();
+          context.recenterElements();
         });
       },
       { passive: true }
     );
   }
 
-  onScroll() {
+  updateElements() {
     for (let i = this._elements.length - 1; i >= 0; i--) {
       this._elements[i].update();
     }
   }
 
-  onResize() {
+  recenterElements() {
     for (let i = this._elements.length - 1; i >= 0; i--) {
       this._elements[i].recenter();
     }
