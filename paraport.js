@@ -15,7 +15,7 @@ class ParaportElement {
     this._speed =
       parseFloat(
         this._element.getAttribute("data-para-speed") || options.defaultSpeed
-      ) * (options.multiplier || 0.05);
+      ) * 0.05;
 
     this._centerPoint = this.calculateCenterPoint();
 
@@ -66,10 +66,7 @@ class Paraport {
     this._options = Object.assign({
       selector: ".para",
       defaultSpeed: 2,
-      multiplier: 1,
-      events: false,
       visibleClass: "para-visible",
-      animate: true,
     }, options);
 
     let elements = document.querySelectorAll(this._options.selector);
@@ -86,7 +83,6 @@ class Paraport {
       this._elements.push(
         new ParaportElement(element, {
           defaultSpeed: this._options.defaultSpeed,
-          multiplier: this._options.multiplier,
           visibleClass: this._options.visibleClass,
         })
       );
