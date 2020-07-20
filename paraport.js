@@ -63,22 +63,20 @@ class ParaportElement {
 
 class Paraport {
   constructor(options = {}) {
-    const defaults = {
+    this._options = Object.assign({
       selector: ".para",
       defaultSpeed: 2,
       multiplier: 1,
       events: false,
       visibleClass: "para-visible",
       animate: true,
-    };
+    }, options);
 
-    let elements = document.querySelectorAll(
-      options.selector || defaults.selector
-    );
+    let elements = document.querySelectorAll(this._options.selector);
 
     if (elements.length < 1) {
       console.warn(
-        `No elements found matching ${options.selector || defaults.selector}`
+        `No elements found matching ${this._options.selector}`
       );
       return;
     }
@@ -87,9 +85,9 @@ class Paraport {
     for (const element of elements) {
       this._elements.push(
         new ParaportElement(element, {
-          defaultSpeed: options.defaultSpeed || defaults.defaultSpeed,
-          multiplier: options.multiplier || defaults.multiplier,
-          visibleClass: options.visibleClass || defaults.visibleClass,
+          defaultSpeed: this._options.defaultSpeed,
+          multiplier: this._options.multiplier,
+          visibleClass: this._options.visibleClass,
         })
       );
     }
