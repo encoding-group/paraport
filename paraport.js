@@ -33,10 +33,7 @@ class ParaportElement {
     let offset =
       -(this._centerPoint - this._element.getBoundingClientRect().top) *
       this._speed;
-    this._element.style.transform =
-      this._options.axis === "y"
-        ? `translateY(${offset}px)`
-        : `translateX(${offset}px)`;
+    this._element.style.transform = `translateY(${offset}px)`;
   }
 
   updateVisibility() {
@@ -70,7 +67,6 @@ class Paraport {
       selector: ".para",
       defaultSpeed: 2,
       multiplier: 1,
-      axis: "y",
       events: false,
       visibleClass: "para-visible",
       animate: true,
@@ -93,7 +89,6 @@ class Paraport {
         new ParaportElement(element, {
           defaultSpeed: options.defaultSpeed || defaults.defaultSpeed,
           multiplier: options.multiplier || defaults.multiplier,
-          axis: options.axis || defaults.axis,
           visibleClass: options.visibleClass || defaults.visibleClass,
         })
       );
