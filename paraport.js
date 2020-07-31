@@ -4,7 +4,7 @@
  * ©2020 encoding.group
  * https://github.com/encoding-group/paraport
  *
- * v0.1 last modified 2020-07-18
+ * v0.1 last modified 2020-07-31
  */
 
 class ParaportElement {
@@ -13,9 +13,7 @@ class ParaportElement {
     this._element = element;
 
     this._speed =
-      parseFloat(
-        this._element.getAttribute("data-para-speed") || options.defaultSpeed
-      ) *
+      parseFloat(this._element.dataset.paraSpeed || options.defaultSpeed) *
       0.05 *
       options.multiply;
 
@@ -32,14 +30,14 @@ class ParaportElement {
   }
 
   applyOffset() {
-    let offset =
+    const offset =
       -(this._centerPoint - this._element.getBoundingClientRect().top) *
       this._speed;
     this._element.style.transform = `translateY(${offset}px)`;
   }
 
   updateVisibility() {
-    let box = this._element.getBoundingClientRect();
+    const box = this._element.getBoundingClientRect();
 
     let isVisible = box.y < window.innerHeight && box.bottom > 0;
 
