@@ -15,7 +15,9 @@ class ParaportElement {
     this._speed =
       parseFloat(
         this._element.getAttribute("data-para-speed") || options.defaultSpeed
-      ) * 0.05 * options.multiply;
+      ) *
+      0.05 *
+      options.multiply;
 
     this._centerPoint = this.calculateCenterPoint();
 
@@ -63,46 +65,43 @@ class ParaportElement {
 
 class Paraport {
   constructor(options = {}) {
-    this._options = Object.assign({
-      selector: ".para",
-      defaultSpeed: 2,
-      visibleClass: "para-visible",
-      multiply: 1
-    }, options);
+    this._options = Object.assign(
+      {
+        selector: ".para",
+        defaultSpeed: 2,
+        visibleClass: "para-visible",
+        multiply: 1,
+      },
+      options
+    );
 
-    let elements = document.querySelectorAll(this._options.selector);
+    let elements = [...document.querySelectorAll(this._options.selector)];
 
     if (elements.length < 1) {
-      console.warn(
-        `No elements found matching ${this._options.selector}`
-      );
+      console.warn(`No elements found matching ${this._options.selector}`);
       return;
     }
 
-    this._elements = [];
-    for (const element of elements) {
-      this._elements.push(
+    this._elements = elements.map(
+      (element) =>
         new ParaportElement(element, {
           defaultSpeed: this._options.defaultSpeed,
           visibleClass: this._options.visibleClass,
           multiply: this._options.multiply,
         })
-      );
-    }
+    );
 
     document.body.classList.add("para-initalized");
 
-    let context = this;
-
     setTimeout(() => {
-      context.updateElements();
+      this.updateElements();
     }, 1);
 
     window.addEventListener(
       "scroll",
       () => {
         window.requestAnimationFrame(() => {
-          context.updateElements();
+          this.updateElements();
         });
       },
       { passive: true }
@@ -112,7 +111,7 @@ class Paraport {
       "resize",
       () => {
         window.requestAnimationFrame(() => {
-          context.recenterElements();
+          this.recenterElements();
         });
       },
       { passive: true }
@@ -120,13 +119,15 @@ class Paraport {
   }
 
   updateElements() {
-    for (let i = this._elements.length - 1; i >= 0; i--) {
+    let i = this._elements.length;
+    while (i--) {
       this._elements[i].update();
     }
   }
 
   recenterElements() {
-    for (let i = this._elements.length - 1; i >= 0; i--) {
+    let i = this._elements.length;
+    while (i--) {
       this._elements[i].recenter();
     }
   }
